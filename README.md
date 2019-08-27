@@ -20,10 +20,10 @@
 
 
 # Credentials
-## User Login -
-### User 1 - Email - punam@aress.net
-### Password - Punam@123
+### User Login -
+#### User 1 - Email - punam@aress.net
+#### Password - Punam@123
 
-## Admin Login -
-### Email - nikhil@aress.net
-### Password - Nikhil@123
+### Admin Login -
+#### Email - nikhil@aress.net
+#### Password - Nikhil@123
