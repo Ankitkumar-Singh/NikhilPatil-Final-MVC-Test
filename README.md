@@ -21,7 +21,7 @@
 
 # Credentials
 ### User Login -
-#### User 1 - Email - punam@aress.net
+#### Email - punam@aress.net
 #### Password - Punam@123
 
 ### Admin Login -
