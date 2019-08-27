@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<ImageGallary.Models.Image>
 
-
 <table class="table">
     <tr>
         <th>
@@ -18,25 +17,25 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderNo)
-        </td>
-        <td>
-            <img src="@Url.Content(item.Url)" alt="@item.ImageTitle" class="img-thumbnail" width="100"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UploadDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ImageId },  new { @class = "btn btn-outline-primary shadow" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ImageId },  new { @class = "btn btn-danger shadow" })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNo)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Url)" alt="@item.ImageTitle" class="img-thumbnail" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ImageId }, new { @class = "btn btn-outline-primary shadow" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ImageId }, new { @class = "btn btn-danger shadow" })
+            </td>
+        </tr>
+    }
 </table>

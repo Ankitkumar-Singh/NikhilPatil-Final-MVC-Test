@@ -1,9 +1,9 @@
 ﻿using ImageGallary.Models;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Data.Entity;
 
 namespace DynamicImageGallary.Controllers
 {
@@ -26,7 +26,7 @@ namespace DynamicImageGallary.Controllers
 
                 if (db.UserDetails.Any(x => x.Email.Equals(user.Email, StringComparison.Ordinal) && x.Password.Equals(user.Password, StringComparison.Ordinal)))
                 {
-                    UserDetail userDetail = db.UserDetails.Include(e=>e.Usertype).Single(x => x.Email == user.Email);
+                    UserDetail userDetail = db.UserDetails.Include(e => e.Usertype).Single(x => x.Email == user.Email);
 
                     Session["UserEmail"] = userDetail.Email;
                     Session["UserRole"] = userDetail.UsertypeId;

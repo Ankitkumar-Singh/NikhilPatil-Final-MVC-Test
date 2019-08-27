@@ -19,22 +19,21 @@
 
             @foreach (var item in Model)
             {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TagText)
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserDetail.Firstname)
-                @Html.DisplayFor(modelItem => item.UserDetail.Lastname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TagDate)
-            </td>
-        </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TagText)
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserDetail.Firstname)
+                        @Html.DisplayFor(modelItem => item.UserDetail.Lastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TagDate)
+                    </td>
+                </tr>
             }
-
         </table>
     </div>
 </div>

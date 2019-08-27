@@ -22,14 +22,14 @@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.ImageTitle, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.ImageTitle, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ImageTitle, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.ImageTitle, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ImageTitle, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.OrderNo, htmlAttributes: new { @class = "control-label" })
-                                @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.OrderNo, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.OrderNo, "", new { @class = "text-danger" })
                         </div>
 
                         <div class="form-group">
@@ -54,7 +54,7 @@
                             <div class="float-right">
                                 <input type="submit" value="Save" class="btn btn-primary shadow" />
                             </div>
-                            @Html.ActionLink("Cancel", "Index",null, new { @class = "btn btn-outline-danger shadow" })
+                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-outline-danger shadow" })
                         </div>
                     </div>
                 }

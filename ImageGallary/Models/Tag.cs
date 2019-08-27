@@ -11,7 +11,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ImageGallary.Models
 {
-
     public partial class Tag
     {
         [ScaffoldColumn(false)]
@@ -24,7 +23,7 @@ namespace ImageGallary.Models
         [Display(Name = "Upload date"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime TagDate { get; set; }
         public int UserId { get; set; }
-    
+
         public virtual Image Image { get; set; }
         public virtual UserDetail UserDetail { get; set; }
     }

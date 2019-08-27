@@ -17,10 +17,10 @@ namespace ImageGallary.Models
         {
             this.UserDetails = new HashSet<UserDetail>();
         }
-    
+
         public short TypeId { get; set; }
         public string Type { get; set; }
-    
+
         public virtual ICollection<UserDetail> UserDetails { get; set; }
     }
 }

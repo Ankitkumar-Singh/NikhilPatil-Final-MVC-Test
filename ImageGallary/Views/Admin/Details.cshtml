@@ -2,23 +2,18 @@
     ViewBag.Title = "Details";
 }
 
-
 <div class="container mt-5">
-    <div class="">
-        
-        <div class="card shadow">
-            <div class="card-header">
-                <h3>Image details</h3>
-            </div>
-            <div class="card-Body">
-                @Html.Action("Images")
-            </div>
-            <div class="card-footer">
-                @Html.Action("Comments")
-                @Html.Action("Tags")
-            </div>
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-primary shadow" })
+    <div class="card shadow">
+        <div class="card-header">
+            <h3>Image details</h3>
         </div>
-        
+        <div class="card-Body">
+            @Html.Action("Images")
+        </div>
+        <div class="card-footer">
+            @Html.Action("Comments")
+            @Html.Action("Tags")
+        </div>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-primary shadow" })
     </div>
 </div>
