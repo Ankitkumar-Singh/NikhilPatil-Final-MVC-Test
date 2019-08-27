@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ImageGallary.Models.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container mt-5">
+    <div class="">
+        <p>
+            @Html.ActionLink("Upload image", "Create",null, new { @class = "btn btn-success shadow" })
+        </p>
+        <table class="table table-responsive-sm table-striped table-hover shadow">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UploadDate)
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderNo)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Url)" alt="@item.ImageTitle" class="img-thumbnail" width="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UploadDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Admin", new { id = item.ImageId }, new { @class = "btn btn-default shadow" }) |
+                        @Html.ActionLink("Details", "Details", "Admin", new { id = item.ImageId }, new { @class = "btn btn-default shadow" }) |
+                        @Html.ActionLink("Delete", "Delete", "Admin", new { id = item.ImageId }, new { @class = "btn btn-default shadow" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

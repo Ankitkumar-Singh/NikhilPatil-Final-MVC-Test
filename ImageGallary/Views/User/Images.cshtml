@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ImageGallary.Models.Image>
+
+<div class="card-img flex-column mt-2">
+    @foreach (var item in Model)
+    {
+        <img src="@Url.Content(item.Url)" alt="@item.ImageTitle" width="100" class="mt-3"/>
+    }
+</div>

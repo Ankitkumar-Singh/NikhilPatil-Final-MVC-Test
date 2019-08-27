@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ImageGallary.Models.Comment>
+
+<table class="table">
+    <tr>
+        <h3>Comments</h3>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment1)
+        </th>
+        <th>
+            User Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentDate)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDetail.Firstname)
+                @Html.DisplayFor(modelItem => item.UserDetail.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentDate)
+            </td>
+        </tr>
+    }
+
+</table>

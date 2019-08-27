@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ImageGallary.Models.Tag>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-responsive-sm table-striped table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TagText)
+                </th>
+                <th></th>
+                <th></th>
+                <th>
+                    User name
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TagDate)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TagText)
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDetail.Firstname)
+                @Html.DisplayFor(modelItem => item.UserDetail.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TagDate)
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Gallary</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        @Html.ActionLink("Gallary", "", "", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+
+                @if (Session["UserRole"] != null)
+                {
+                    if (Session["UserRole"].ToString() == "1")
+                    {
+                        <li class="nav-item ">
+                            @Html.ActionLink("Upload image", "Create", "Admin", null, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Images", "Index", "Admin", null, new { @class = "nav-link" })
+                        </li>
+                    }
+                    else if (Session["UserRole"].ToString() == "2")
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Images", "Index", "User", null, new { @class = "nav-link" })
+                        </li>
+                        if (Session["UserEmail"] == null)
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Login", "SignIn", "Authentication", null, new { @class = "nav-link" })
+                            </li>
+                        }
+                    }
+                }
+                @if (Session["UserEmail"] != null)
+                {
+                    <li class="nav-item ">
+                        @Html.ActionLink("Logout", "SignOut", "Authentication", null, new { @class = "nav-link" })
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <div class="mt-5">
+        <hr />
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/Site.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

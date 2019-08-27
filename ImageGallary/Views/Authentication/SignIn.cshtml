@@ -1,0 +1,40 @@
+﻿@model ImageGallary.Models.UserDetail
+
+@{
+    ViewBag.Title = "SignIn";
+}
+
+<div class="container mt-5">
+    <div class="col-sm-4 offset-sm-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <b>LOGIN</b>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger font-weight-bold font-16 noListStyle" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your email *" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                        @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password *" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div class="float-right">
+                            <input type="submit" value="Sign In" class="btn btn-dark" />
+                        </div>
+                        @Html.ActionLink("Don't have account? Please signup.", "SignUp", "Authentication", null, htmlAttributes: new { @class = "ForgetPwd" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
