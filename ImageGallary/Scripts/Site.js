@@ -30,9 +30,7 @@ function openModal(imageId) {
                 alert(response.statusText);
             }
         });
-    }    
-
-
+    }
 }
 
 // Close the Modal
@@ -45,21 +43,6 @@ showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
-    //if (imageId != null && imageId.id != "") {
-    //    $.ajax({
-    //        url: "/User/Comments",
-    //        dataType: "HTML",
-    //        type: "POST",
-    //        contentType: "application/json; charset=utf-8",
-    //        data: "{ 'imageId': " + imageId.id + "}",
-    //        success: function (result) {
-    //            $('#comments').html(result);
-    //        },
-    //        error: function (response) {
-    //            alert(response.statusText);
-    //        }
-    //    });
-    //}  
     showSlides(slideIndex += n);
 }
 
@@ -72,7 +55,6 @@ function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
     for (i = 0; i < slides.length; i++) {
@@ -82,6 +64,4 @@ function showSlides(n) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
     slides[slideIndex - 1].style.display = "block";
-    //dots[slideIndex - 1].className += " active";
-    //captionText.innerHTML = dots[slideIndex - 1].alt;
 }
