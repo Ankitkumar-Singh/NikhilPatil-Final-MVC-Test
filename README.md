@@ -9,14 +9,14 @@
 
 # Admin
 ### Image gallery management 
-* upload image
-* manage image sequence
-* display uploaded images in list
-### admin should able to
-* change image
-* edit image name
-* modify image sequence
-* delete image 
+* Upload image
+* Manage image sequence
+* Display uploaded images in list
+### Admin should able to
+* Change image
+* Edit image name
+* Modify image sequence
+* Delete image 
 
 
 # Credentials
