@@ -1,4 +1,7 @@
-﻿@model IEnumerable<ImageGallary.Models.Image>
+﻿@model IPagedList<ImageGallary.Models.Image>
+
+@using PagedList.Mvc;
+@using PagedList;
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +15,16 @@
         <table class="table table-responsive-sm table-striped table-hover shadow">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ImageTitle)
+                    @Html.DisplayNameFor(model => model.First().ImageTitle)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OrderNo)
+                    @Html.DisplayNameFor(model => model.First().OrderNo)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Url)
+                    @Html.DisplayNameFor(model => model.First().Url)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.UploadDate)
+                    @Html.DisplayNameFor(model => model.First().UploadDate)
                 </th>
                 <th>Actions</th>
             </tr>
@@ -49,5 +52,6 @@
                 </tr>
             }
         </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
     </div>
 </div>

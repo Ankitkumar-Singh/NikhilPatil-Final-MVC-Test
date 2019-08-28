@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace ImageGallary.Controllers
 {
@@ -19,14 +21,14 @@ namespace ImageGallary.Controllers
 
         #region Display images
         /// <summary>Indexes Images.</summary>
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (Session["UserRole"].ToString() != "1")
             {
                 return RedirectToAction("SignIn", "Authentication");
             }
 
-            return View(db.Images.OrderBy(o => o.OrderNo).ToList());
+            return View(db.Images.OrderBy(o => o.OrderNo).ToList().ToPagedList(page ?? 1, 5));
         }
         #endregion
 
