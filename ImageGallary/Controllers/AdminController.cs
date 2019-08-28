@@ -87,13 +87,7 @@ namespace ImageGallary.Controllers
         [HttpPost]
         public ActionResult Create(Image image)
         {
-            string filename = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
-            string extension = Path.GetExtension(image.ImageFile.FileName);
-
-            filename = filename + DateTime.Now.ToString("dd/MM/yyyy") + extension;
-            image.Url = "~/Images/" + filename;
-            filename = Path.Combine(Server.MapPath("~/Images/"), filename);
-            image.ImageFile.SaveAs(filename);
+            UploadFile(image);
 
             if (ModelState.IsValid)
             {
@@ -135,13 +129,7 @@ namespace ImageGallary.Controllers
 
             if (image.ImageFile != null)
             {
-                string filename = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
-                string extension = Path.GetExtension(image.ImageFile.FileName);
-
-                filename = filename + DateTime.Now.ToString("dd/MM/yyyy") + extension;
-                imageFromDB.Url = "~/Images/" + filename;
-                filename = Path.Combine(Server.MapPath("~/Images/"), filename);
-                image.ImageFile.SaveAs(filename);
+                UploadFile(image);
             }
             else
             {
@@ -218,6 +206,21 @@ namespace ImageGallary.Controllers
             db.Images.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        #endregion
+
+        #region File upload method
+        public ActionResult UploadFile(Image image)
+        {
+            string filename = Path.GetFileNameWithoutExtension(image.ImageFile.FileName);
+            string extension = Path.GetExtension(image.ImageFile.FileName);
+
+            filename = filename + DateTime.Now.ToString("dd/MM/yyyy") + extension;
+            image.Url = "~/Images/" + filename;
+            filename = Path.Combine(Server.MapPath("~/Images/"), filename);
+            image.ImageFile.SaveAs(filename);
+
+            return View(image);
         }
         #endregion
     }

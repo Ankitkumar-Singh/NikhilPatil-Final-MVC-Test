@@ -33,8 +33,8 @@ namespace ImageGallary.Models
         public int OrderNo { get; set; }
         [Display(Name = "Upload Image")]
         public string Url { get; set; }
-        [Display(Name = "Upload date"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public HttpPostedFileBase ImageFile { get; set; }
+        [Display(Name = "Upload date"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> UploadDate { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
