@@ -8,15 +8,15 @@
 * Send an email to the admin when a comment is added to an image 
 
 # Admin
-* Image gallery management 
-** upload image
-** manage image sequence
-** display uploaded images in list
-*** admin should able to
-*** change image
-*** edit image name
-*** modify image sequence
-*** delete image 
+### Image gallery management 
+* upload image
+* manage image sequence
+* display uploaded images in list
+### admin should able to
+* change image
+* edit image name
+* modify image sequence
+* delete image 
 
 
 # Credentials
