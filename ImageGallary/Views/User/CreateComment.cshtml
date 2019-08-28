@@ -11,12 +11,14 @@
                 <b>Add image comment</b>
             </div>
             <div class="card-body">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("CreateComment","User",null, FormMethod.Post))
                 {
                     <div class="form-horizontal">
 
                         <div class="form-group">
                             <img src="@Url.Content(Model.Image.Url)" id="@Model.Image.ImageId" value="@Model.Image.ImageTitle" width="480" />
+                            @Html.HiddenFor(model => model.Image.ImageId)
+                            @Html.HiddenFor(model => model.Image.Url)
                         </div>
 
                         <div class="form-group">

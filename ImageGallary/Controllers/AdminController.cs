@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace ImageGallary.Controllers
 {
     [Authorize]
+    [HandleError]
     public class AdminController : Controller
     {
         #region Variable declaration

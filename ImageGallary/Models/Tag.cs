@@ -19,6 +19,7 @@ namespace ImageGallary.Models
         public int ImageId { get; set; }
         [Display(Name = "Tag")]
         [Required]
+        [RegularExpression("^#", ErrorMessage = "Tag should start with '#'")]
         public string TagText { get; set; }
         [Display(Name = "Upload date"), DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime TagDate { get; set; }

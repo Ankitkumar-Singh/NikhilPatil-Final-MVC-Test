@@ -9,6 +9,7 @@ using System.Web.Mvc;
 namespace ImageGallary.Controllers
 {
     [Authorize]
+    [HandleError]
     public class UserController : Controller
     {
         #region Variable Declarations
@@ -65,36 +66,39 @@ namespace ImageGallary.Controllers
                 return RedirectToAction("SignIn", "Authentication");
             }
 
-            Image image = db.Images.Find(id);
-            Comment comment = new Comment();
-            var CommentViewModel = new CommentViewModel { Comment = comment, Image = image };
+            CommentViewModel commentViewModel = new CommentViewModel();
+            commentViewModel.Image = new Image();
+            commentViewModel.Image = db.Images.Find(id);
+            commentViewModel.Comment = new Comment();
 
-            return View(CommentViewModel);
+            return View(commentViewModel);
         }
 
         /// <summary>Creates the comment.</summary>
         /// <param name="comment">The comment.</param>
         /// <param name="image">The image.</param>
         [HttpPost]
-        public ActionResult CreateComment(Comment comment, Image image)
+        public ActionResult CreateComment(CommentViewModel commentViewModel)
         {
-            comment.CommentDate = DateTime.Now;
-            comment.UserId = 2; //Convert.ToInt32(Session["UserId"]);
-            comment.ImageId = image.ImageId;
-            image.ImageTitle = image.ImageTitle;
+            commentViewModel.Comment.CommentDate = DateTime.Now;
+            commentViewModel.Comment.UserId = Convert.ToInt32(Session["UserId"]);
+            commentViewModel.Comment.ImageId = commentViewModel.Image.ImageId;
+            commentViewModel.Image.Url = commentViewModel.Image.Url;
+            commentViewModel.Image.ImageTitle = commentViewModel.Image.ImageTitle;
 
+            ModelState.Clear();
             if (ModelState.IsValid)
             {
                 using (db)
                 {
-                    db.Comments.Add(comment);
+                    db.Comments.Add(commentViewModel.Comment);
                     db.SaveChanges();
 
                     var message = new MailMessage();
                     message.To.Add(new MailAddress("patilnikhil64@gmail.com"));
                     message.From = new MailAddress("aress.iphone5@gmail.com");
                     message.Subject = "Comment has been added.";
-                    message.Body = "Hello Admin! " + Session["UserEmail"] + " has addedd comment to image as " + comment.Comment1 + ".";
+                    message.Body = "Hello Admin! " + Session["UserEmail"] + " has addedd comment to image as " + commentViewModel.Comment.Comment1 + ".";
                     message.IsBodyHtml = true;
 
                     using (var smtp = new SmtpClient())
@@ -115,8 +119,7 @@ namespace ImageGallary.Controllers
                 }
             }
 
-            ModelState.Clear();
-            return View();
+            return View(commentViewModel);
         }
         #endregion
 
@@ -131,34 +134,37 @@ namespace ImageGallary.Controllers
                 return RedirectToAction("SignIn", "Authentication");
             }
 
-            Image image = db.Images.Find(id);
-            Tag tag = new Tag();
-            var CommentViewModel = new CommentViewModel { Tag = tag, Image = image };
+            CommentViewModel commentViewModel = new CommentViewModel();
+            commentViewModel.Image = new Image();
+            commentViewModel.Image = db.Images.Find(id);
+            commentViewModel.Tag = new Tag();
 
-            return View(CommentViewModel);
+            return View(commentViewModel);
         }
 
         /// <summary>Creates the tag.</summary>
         /// <param name="tag">The tag.</param>
         /// <param name="image">The image.</param>
         [HttpPost]
-        public ActionResult CreateTag(Tag tag, Image image, CommentViewModel commentViewModel)
+        public ActionResult CreateTag(CommentViewModel commentViewModel)
         {
-            tag.TagDate = DateTime.Now;
-            tag.UserId = 2; //Convert.ToInt32(Session["UserId"]);
-            tag.ImageId = image.ImageId;
+            commentViewModel.Tag.TagDate = DateTime.Now;
+            commentViewModel.Tag.UserId = 2; //Convert.ToInt32(Session["UserId"]);
+            commentViewModel.Tag.ImageId = commentViewModel.Image.ImageId;
+            commentViewModel.Image.Url = commentViewModel.Image.Url;
+            commentViewModel.Image.ImageTitle = commentViewModel.Image.ImageTitle;
 
+            ModelState.Clear();
             if (ModelState.IsValid)
             {
                 using (db)
                 {
-                    db.Tags.Add(tag);
+                    db.Tags.Add(commentViewModel.Tag);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
 
-            ModelState.Clear();
             return View(commentViewModel);
         }
         #endregion

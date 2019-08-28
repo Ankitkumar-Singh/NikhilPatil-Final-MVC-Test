@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="container Error-page mt-5">
+    <h2>
+        Sorry,<br />An unexpected error has occurred while processing your request.
+    </h2>
+    @if (Session["UserRole"] != null)
+    {
+        if (Session["UserRole"].ToString() == "1")
+        {
+            <h6>@Html.ActionLink("Go Back To Home Page", "Index", "Admin")</h6>
+        }
+        else if (Session["UserRole"].ToString() == "2")
+        {
+            <h6>@Html.ActionLink("Go Back To Home Page", "Index", "User")</h6>
+        }
+
+    }
+    else
+    {
+        <h6>@Html.ActionLink("Login again", "SignIn", "Authentication")</h6>
+    }
+
+</div>
